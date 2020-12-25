@@ -25,4 +25,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ### 学习笔记
+1.#### 用到的技术
+> vue-route  vuex  sass
 
+### 疑问点
+ 1.margin-left: .4rem   margin-left: 0.4rem
