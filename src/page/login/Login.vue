@@ -22,8 +22,8 @@ export default {
       phone: '',
       code: '',
       loginIsEnable: false,
-      btnCodeText: '获取验证码',
-      btnCodeTextColor: '#22AC38',
+      btnCodeText: '发送验证码',
+      btnCodeTextColor: '#969696',
       btnCodeIsRunint: false,
       timeLong: 60,
       timeInterval: ''
@@ -31,6 +31,9 @@ export default {
   },
   methods: {
     getPhoneCode () {
+      if (this.phone.length === 0) {
+        return
+      }
       if (this.timeLong === 60) {
         this.btnCodeTextColor = '#969696'
         this.timeInterval = setInterval(() => {
@@ -53,6 +56,10 @@ export default {
     },
     phoneChange () {
       this.phone = this.phone.replace(/\D/g, '')
+      this.btnCodeTextColor = this.phone.length === 0 ? '#969696' : '#22AC38'
+      if (this.phone.length === 0) {
+        this.btnCodeText = '发送验证码'
+      }
     }
   }
 }
