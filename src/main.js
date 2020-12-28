@@ -5,7 +5,8 @@ import router from './router'
 // 在route目录下 初始化 vuex 组件  并导入
 import store from './store'
 // 页面适配
-import './config/rem'
+// px 转rem
+import 'lib-flexible/flexible'
 
 Vue.config.productionTip = false
 

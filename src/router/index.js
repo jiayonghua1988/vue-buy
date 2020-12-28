@@ -2,10 +2,9 @@
 import Vue from 'vue'
 // 导入vue-router
 import VueRouter from 'vue-router'
-// 导入页面
-import Home from '../page/home/home.vue'
 // 选择城市
 import City from '../page/city/city.vue'
+import Login from '../page/login/Login.vue'
 
 // 导入组件 必须use
 Vue.use(VueRouter)
@@ -13,8 +12,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Login',
+    component: Login
   },
   {
     path: '/city',
