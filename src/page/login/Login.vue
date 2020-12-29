@@ -55,6 +55,13 @@ export default {
           }
         }, 1000)
       }
+      this.$axios({
+        url: '/auth/validateCode/send?phone=' + this.phone,
+        method: 'get',
+        params: {}
+      }).then(res => {
+        console.log(res)
+      })
     },
     login () {
       if (this.loginIsEnable) {

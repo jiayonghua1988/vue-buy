@@ -8,6 +8,11 @@ import store from './store'
 // px 转rem
 import 'lib-flexible/flexible'
 
+// 导入  axios 网络请求框架
+import axios from 'axios'
+//  全局变量
+Vue.prototype.$axios = axios
+axios.defaults.baseURL = '/web/'
 Vue.config.productionTip = false
 
 new Vue({
