@@ -1,5 +1,5 @@
 {
-  "name": "buy",
+  "name": "parent",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -48,7 +48,10 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-debugger": "off",
+      "no-console": "off"
+    }
   },
   "browserslist": [
     "> 1%",

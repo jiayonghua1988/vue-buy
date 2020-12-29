@@ -31,5 +31,10 @@ export default {
     padding: 0;
     margin: 0;
   }
+  input {
+    outline: none;
+    background: transparent;
+    border: 0;
+  }
 
 </style>

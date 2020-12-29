@@ -9,9 +9,9 @@
     </section>
     <section class="phoneCode">
         <input type="text" placeholder="请输入验证码" maxlength="6" v-model="code" @input="phoneChange" class="inputCode">
-      <span class="btn_code" :class="{color:btnCodeTextColor}" @click="getPhoneCode">{{btnCodeText}}</span>
+      <span :class="btnCodeStyle" @click="getPhoneCode">{{btnCodeText}}</span>
     </section>
-    <button class="btn_login" @click="login">登录/注册</button>
+    <button :class="btnLoginStyle" @click="login">登录/注册</button>
   </div>
 </template>
 
@@ -25,26 +25,33 @@ export default {
       btnCodeText: '发送验证码',
       btnCodeTextColor: '#969696',
       btnCodeIsRunint: false,
-      timeLong: 60,
       timeInterval: ''
+    }
+  },
+  computed: {
+    btnLoginStyle: function () {
+      return this.phone.length > 0 && this.code.length > 0 ? 'btn_login_enable' : 'btn_login'
+    },
+    btnCodeStyle: function () {
+      return this.phone.length > 0 && !this.timeInterval ? 'btn_code' : 'btn_code_disable'
     }
   },
   methods: {
     getPhoneCode () {
-      if (this.phone.length === 0) {
+      if (this.phone.length === 0 || this.timeInterval) {
         return
       }
-      if (this.timeLong === 60) {
-        this.btnCodeTextColor = '#969696'
+      let timeLong = 60
+      if (timeLong === 60) {
         this.timeInterval = setInterval(() => {
-          this.timeLong -= 1
-          this.btnCodeText = this.timeLong + 'S'
-          console.log('倒计时：' + this.timeLong)
-          if (this.timeLong === 1) {
+          timeLong -= 1
+          this.btnCodeTextColor = '#969696'
+          this.btnCodeText = timeLong + 'S'
+          console.log('倒计时：' + timeLong)
+          if (timeLong === 1) {
             clearInterval(this.timeInterval)
             this.btnCodeText = '重新获取'
             this.btnCodeTextColor = '#22AC38'
-            this.timeLong = 60
           }
         }, 1000)
       }
@@ -116,10 +123,26 @@ export default {
   width: 200px;
   text-align: center;
 }
+.btn_code_disable {
+  font-size: 28px;
+  color: #CDCDCD;
+  border-left: 1px solid #DEDCDC;
+  padding-left: 20px;
+  width: 200px;
+  text-align: center;
+}
 .btn_login {
   margin: 100px 30px;
   border-radius: 100px;
   background: #CDCDCD;
+  height: 90px;
+  color: #fff;
+  font-size: 30px;
+}
+.btn_login_enable {
+  margin: 100px 30px;
+  border-radius: 100px;
+  background: #69DC6B;
   height: 90px;
   color: #fff;
   font-size: 30px;
