@@ -14,6 +14,8 @@ import axios from 'axios'
 //  导入 vant Toast
 import { Toast } from 'vant'
 import 'vant/lib/index.css'
+
+import './style/resetcss.css'
 Vue.use(Toast)
 
 //  全局变量

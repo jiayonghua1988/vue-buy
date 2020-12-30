@@ -2,8 +2,6 @@
 import Vue from 'vue'
 // 导入vue-router
 import VueRouter from 'vue-router'
-// 选择城市
-import City from '../page/city/city.vue'
 import Login from '../page/login/Login.vue'
 
 // 导入组件 必须use
@@ -14,11 +12,6 @@ const routes = [
     path: '/',
     name: 'Login',
     component: Login
-  },
-  {
-    path: '/city',
-    name: 'City',
-    component: City
   }
 ]
 

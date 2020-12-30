@@ -11,7 +11,7 @@
         <input type="text" placeholder="请输入验证码" maxlength="6" v-model="code" @input="phoneChange" class="inputCode">
       <span :class="btnCodeStyle" @click="getPhoneCode">{{btnCodeText}}</span>
     </section>
-    <button :class="btnLoginStyle" @click="login">登录/注册</button>
+    <div :class="btnLoginStyle" @click="login">登录/注册</div>
   </div>
 </template>
 
@@ -169,6 +169,8 @@ body {
   height: 90px;
   color: #fff;
   font-size: 30px;
+  text-align: center;
+  line-height: 90px;
 }
 .btn_login_enable {
   margin-top: 100px;
@@ -179,5 +181,7 @@ body {
   height: 90px;
   color: #fff;
   font-size: 30px;
+  text-align: center;
+  line-height: 90px;
 }
 </style>
