@@ -9,10 +9,16 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Login',
     component: () => import('../page/login/Login.vue'),
     meta: {
       title: '登录'
+    }
+  },
+  {
+    path: '/city',
+    component: () => import('../page/city/City.vue'),
+    meta: {
+      title: '选择城市'
     }
   }
 ]
