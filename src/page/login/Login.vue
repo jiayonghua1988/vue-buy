@@ -69,9 +69,24 @@ export default {
       })
     },
     login () {
-      if (this.loginIsEnable) {
+      this.$axios({
+        url: '/auth/phone',
+        method: 'post',
+        data: {
+          phone: this.phone,
+          verifyCode: this.code,
+          userType: 'P',
+          source: 3,
+          register: true,
+          device: 'Android-Parent'
+        }
+      }).then(res => {
+        if (res.data.code === 0) {
+          this.$toast.success('登录成功')
+        } else {
 
-      }
+        }
+      })
     },
     phoneChange () {
       this.phone = this.phone.replace(/\D/g, '')
