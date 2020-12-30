@@ -2,7 +2,6 @@
 import Vue from 'vue'
 // 导入vue-router
 import VueRouter from 'vue-router'
-import Login from '../page/login/Login.vue'
 
 // 导入组件 必须use
 Vue.use(VueRouter)
@@ -11,12 +10,23 @@ const routes = [
   {
     path: '/',
     name: 'Login',
-    component: Login
+    component: () => import('../page/login/Login.vue'),
+    meta: {
+      title: '登录'
+    }
   }
 ]
 
 const router = new VueRouter({
   routes
+})
+
+// 为页面设置标题
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
 })
 
 export default router
