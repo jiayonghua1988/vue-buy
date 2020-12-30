@@ -38,36 +38,35 @@ export default {
   },
   methods: {
     getPhoneCode () {
-      this.$toast.success('AAA')
-      // if (this.phone.length === 0 || this.timeInterval) {
-      //   return
-      // }
-      // let timeLong = 60
-      // if (timeLong === 60) {
-      //   this.timeInterval = setInterval(() => {
-      //     timeLong -= 1
-      //     this.btnCodeTextColor = '#969696'
-      //     this.btnCodeText = timeLong + 'S'
-      //     console.log('倒计时：' + timeLong)
-      //     if (timeLong === 1) {
-      //       clearInterval(this.timeInterval)
-      //       this.btnCodeText = '重新获取'
-      //       this.btnCodeTextColor = '#22AC38'
-      //     }
-      //   }, 1000)
-      // }
-      // this.$axios({
-      //   url: '/auth/validateCode/send?phone=' + this.phone,
-      //   method: 'get',
-      //   params: {}
-      // }).then(res => {
-      //   const isSuccess = res.data.code === 0
-      //   if (isSuccess) {
-      //     this.$toast.success('验证码已发送')
-      //   } else {
-      //     this.$toast.fail(res.data.message)
-      //   }
-      // })
+      if (this.phone.length === 0 || this.timeInterval) {
+        return
+      }
+      let timeLong = 60
+      if (timeLong === 60) {
+        this.timeInterval = setInterval(() => {
+          timeLong -= 1
+          this.btnCodeTextColor = '#969696'
+          this.btnCodeText = timeLong + 'S'
+          console.log('倒计时：' + timeLong)
+          if (timeLong === 1) {
+            clearInterval(this.timeInterval)
+            this.btnCodeText = '重新获取'
+            this.btnCodeTextColor = '#22AC38'
+          }
+        }, 1000)
+      }
+      this.$axios({
+        url: '/auth/validateCode/send?phone=' + this.phone,
+        method: 'get',
+        params: {}
+      }).then(res => {
+        const isSuccess = res.data.code === 0
+        if (isSuccess) {
+          this.$toast.success('验证码已发送')
+        } else {
+          this.$toast.fail(res.data.message)
+        }
+      })
     },
     login () {
       if (this.loginIsEnable) {
