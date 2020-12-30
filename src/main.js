@@ -10,6 +10,12 @@ import 'lib-flexible/flexible'
 
 // 导入  axios 网络请求框架
 import axios from 'axios'
+
+//  导入 vant Toast
+import { Toast } from 'vant'
+import 'vant/lib/index.css'
+Vue.use(Toast)
+
 //  全局变量
 Vue.prototype.$axios = axios
 axios.defaults.baseURL = '/web/'

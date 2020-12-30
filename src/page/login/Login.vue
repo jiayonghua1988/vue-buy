@@ -38,30 +38,36 @@ export default {
   },
   methods: {
     getPhoneCode () {
-      if (this.phone.length === 0 || this.timeInterval) {
-        return
-      }
-      let timeLong = 60
-      if (timeLong === 60) {
-        this.timeInterval = setInterval(() => {
-          timeLong -= 1
-          this.btnCodeTextColor = '#969696'
-          this.btnCodeText = timeLong + 'S'
-          console.log('倒计时：' + timeLong)
-          if (timeLong === 1) {
-            clearInterval(this.timeInterval)
-            this.btnCodeText = '重新获取'
-            this.btnCodeTextColor = '#22AC38'
-          }
-        }, 1000)
-      }
-      this.$axios({
-        url: '/auth/validateCode/send?phone=' + this.phone,
-        method: 'get',
-        params: {}
-      }).then(res => {
-        console.log(res)
-      })
+      this.$toast.success('AAA')
+      // if (this.phone.length === 0 || this.timeInterval) {
+      //   return
+      // }
+      // let timeLong = 60
+      // if (timeLong === 60) {
+      //   this.timeInterval = setInterval(() => {
+      //     timeLong -= 1
+      //     this.btnCodeTextColor = '#969696'
+      //     this.btnCodeText = timeLong + 'S'
+      //     console.log('倒计时：' + timeLong)
+      //     if (timeLong === 1) {
+      //       clearInterval(this.timeInterval)
+      //       this.btnCodeText = '重新获取'
+      //       this.btnCodeTextColor = '#22AC38'
+      //     }
+      //   }, 1000)
+      // }
+      // this.$axios({
+      //   url: '/auth/validateCode/send?phone=' + this.phone,
+      //   method: 'get',
+      //   params: {}
+      // }).then(res => {
+      //   const isSuccess = res.data.code === 0
+      //   if (isSuccess) {
+      //     this.$toast.success('验证码已发送')
+      //   } else {
+      //     this.$toast.fail(res.data.message)
+      //   }
+      // })
     },
     login () {
       if (this.loginIsEnable) {
@@ -80,11 +86,14 @@ export default {
 </script>
 
 <style>
+body {
+  background: #fff;
+}
 .login_logo {
   width: 300px;
   align-self: center;
-  margin-top: 192px;
-  margin-bottom: 100px;
+  padding-top: 192px;
+  padding-bottom: 100px;
 }
 .login_logo img {
   width: 100%;
@@ -120,7 +129,6 @@ export default {
 }
 .container {
   padding: 0px 20px;
-  height: 100vh;
 }
 .btn_code {
   font-size: 28px;
@@ -139,7 +147,9 @@ export default {
   text-align: center;
 }
 .btn_login {
-  margin: 100px 30px;
+  margin-top: 100px;
+  margin-left: 30px;
+  margin-right: 30px;
   border-radius: 100px;
   background: #CDCDCD;
   height: 90px;
@@ -147,7 +157,9 @@ export default {
   font-size: 30px;
 }
 .btn_login_enable {
-  margin: 100px 30px;
+  margin-top: 100px;
+  margin-left: 30px;
+  margin-right: 30px;
   border-radius: 100px;
   background: #69DC6B;
   height: 90px;

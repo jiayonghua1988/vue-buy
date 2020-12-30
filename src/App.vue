@@ -25,7 +25,8 @@ export default {
   .container {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background: #fff;
+
   }
   * {
     padding: 0;
