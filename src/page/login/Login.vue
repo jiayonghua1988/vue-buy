@@ -8,7 +8,7 @@
       <span><input type="tel" placeholder="请输入手机号" maxlength="11" v-model="phone" @input="phoneChange" class="input_phone"></span>
     </section>
     <section class="phoneCode">
-        <input type="text" placeholder="请输入验证码" maxlength="6" v-model="code" @input="phoneChange" class="inputCode">
+        <input type="text" placeholder="请输入验证码" maxlength="6" v-model="code" @input="codeChange" class="inputCode">
       <span :class="btnCodeStyle" @click="getPhoneCode">{{btnCodeText}}</span>
     </section>
     <div :class="btnLoginStyle" @click="login">登录/注册</div>
@@ -97,6 +97,9 @@ export default {
       if (this.phone.length === 0) {
         this.btnCodeText = '发送验证码'
       }
+    },
+    codeChange () {
+      this.code = this.code.replace(/\D/g, '')
     }
   }
 }
