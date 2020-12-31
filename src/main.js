@@ -16,6 +16,8 @@ import { Toast } from 'vant'
 import 'vant/lib/index.css'
 
 import './style/resetcss.css'
+// 导入iconfont
+import './assets/iconfont/iconfont.css'
 Vue.use(Toast)
 
 //  全局变量

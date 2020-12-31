@@ -83,7 +83,9 @@ export default {
       }).then(res => {
         if (res.data.code === 0) {
           this.$toast.success('登录成功')
-          this.$routerouter.push('/city')
+          this.$router.push({
+            path: '/city'
+          })
         } else {
           this.$toast.fail(res.data.message)
         }
