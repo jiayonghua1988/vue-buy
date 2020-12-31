@@ -20,27 +20,29 @@
   <section class="hot-wrap">
     <p class="hot_title">请选择您所在的城市</p>
     <ul class="hot_city_wrap">
-      <li v-for="(item,index) of hotCity" :key="index" class="hot_city_wrap_item">{{item}}</li>
+      <li v-for="(item,index) of hotCity" :key="index" class="hot_city_wrap_item">{{item.city}}</li>
     </ul>
   </section>
   <ul class="city_wrap">
-    <li v-for="(city,index) of citys" :key="index" class="city_item_wrap">{{city}}</li>
+    <li v-for="(city,index) of citys" :key="index" class="city_item_wrap">{{city.city}}</li>
   </ul>
 </div>
 </template>
 <script>
-import citys from '../../assets/citys.json'
+import cityData from '../../assets/citys.json'
 export default {
   data () {
     return {
-      hotCity: ['上海', '北京', '广州', '深圳', '天津', '郑州', '武汉', '张家口', '南阳'],
-      citys: ['鞍山', '安庆', '安阳', '安康', '安顺', '北京', '保定', '包头', '宝鸡', '包头'],
+      hotCity: [],
+      citys: [],
       azList: ['城市定位', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'W', 'X', 'Y', 'Z']
     }
   },
   created () {
     console.log('created-------------')
-    console.log('citys:' + citys)
+    console.log('citys:' + cityData)
+    this.hotCity = cityData.filter(item => item.popular_city === 1)
+    this.citys = cityData
   }
 }
 </script>
