@@ -29,6 +29,7 @@
 </div>
 </template>
 <script>
+import citys from '../../assets/citys.json'
 export default {
   data () {
     return {
@@ -36,6 +37,10 @@ export default {
       citys: ['鞍山', '安庆', '安阳', '安康', '安顺', '北京', '保定', '包头', '宝鸡', '包头'],
       azList: ['城市定位', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'W', 'X', 'Y', 'Z']
     }
+  },
+  created () {
+    console.log('created-------------')
+    console.log('citys:' + citys)
   }
 }
 </script>
@@ -97,12 +102,11 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 630px;
     margin-top: 20px;
   }
   .hot_city_wrap_item {
     height: 80px;
-    width: 195px;
+    width: 30%;
     border: 2px solid #C8C8C8;
     border-radius: 10px;
     font-size: 28px;
