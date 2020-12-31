@@ -1,4 +1,4 @@
-### Iconfont 的用法
+# Iconfont 的用法
 
 #### 1. 使用
 > 打开iconfont 官网  把图标 加入购物车中  点击“下载代码”  
