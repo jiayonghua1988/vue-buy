@@ -40,12 +40,9 @@ export default {
     }
   },
   created () {
-    console.log('created-------------')
-    console.log('citys:' + cityData)
     this.hotCity = cityData.filter(item => item.popular_city === 1)
     const newArray = []
     for (const letter of this.azListArray) {
-      console.log('letter=' + letter)
       newArray.push({ city: letter })
       for (const cityItem of cityData) {
         const pp = cityItem.pinyin.substring(0, 1).toLocaleUpperCase()
