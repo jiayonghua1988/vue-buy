@@ -24,7 +24,7 @@
     </ul>
   </section>
   <ul class="city_wrap">
-    <li v-for="(city,index) of citys" :key="index" class="city_item_wrap">{{city.city}}</li>
+    <li v-for="(city,index) of citys" :key="index" :class="{city_item_wrap:city.city.length != 1,city_item_wrap_title: city.city.length ===1}">{{city.city}}</li>
   </ul>
 </div>
 </template>
@@ -35,14 +35,26 @@ export default {
     return {
       hotCity: [],
       citys: [],
-      azList: ['城市定位', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'W', 'X', 'Y', 'Z']
+      azList: ['城市定位', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'W', 'X', 'Y', 'Z'],
+      azListArray: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'W', 'X', 'Y', 'Z']
     }
   },
   created () {
     console.log('created-------------')
     console.log('citys:' + cityData)
     this.hotCity = cityData.filter(item => item.popular_city === 1)
-    this.citys = cityData
+    const newArray = []
+    for (const letter of this.azListArray) {
+      console.log('letter=' + letter)
+      newArray.push({ city: letter })
+      for (const cityItem of cityData) {
+        const pp = cityItem.pinyin.substring(0, 1).toLocaleUpperCase()
+        if (pp === letter) {
+          newArray.push(cityItem)
+        }
+      }
+    }
+    this.citys = newArray
   }
 }
 </script>
@@ -130,6 +142,11 @@ export default {
     color: #585858;
     border-bottom: 1px solid #EDEDED;
     padding: 30px 0px;
+  }
+  .city_item_wrap_title {
+    font-size: 28px;
+    color: #585858;
+    padding-top: 30px;
   }
   .az_wrap {
     display: flex;
