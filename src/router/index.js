@@ -20,6 +20,14 @@ const routes = [
     meta: {
       title: '选择城市'
     }
+  },
+  {
+    path: '/sub',
+    name: 'sub',
+    component: () => import('../page/subdistrict/ChoiceSubdistrict.vue'),
+    meta: {
+      title: '选择小区'
+    }
   }
 ]
 

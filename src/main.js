@@ -12,13 +12,16 @@ import 'lib-flexible/flexible'
 import axios from 'axios'
 
 //  导入 vant Toast
-import { Toast } from 'vant'
+import { Toast, IndexBar, IndexAnchor, Cell } from 'vant'
 import 'vant/lib/index.css'
 
 import './style/resetcss.css'
 // 导入iconfont
 import './assets/iconfont/iconfont.css'
 Vue.use(Toast)
+Vue.use(IndexBar)
+Vue.use(IndexAnchor)
+Vue.use(Cell)
 
 //  全局变量
 Vue.prototype.$axios = axios
