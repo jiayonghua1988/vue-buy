@@ -28,6 +28,13 @@ const routes = [
     meta: {
       title: '选择小区'
     }
+  },
+  {
+    path: '/baseinfo',
+    component: () => import('../page/baseInfo/BaseInfo.vue'),
+    meta: {
+      title: '基本信息'
+    }
   }
 ]
 

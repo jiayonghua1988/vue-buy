@@ -92,7 +92,7 @@ export default {
     },
     gotoNext (cityName) {
       this.$router.push({
-        path: '/sub',
+        path: '/baseinfo',
         query: {
           city: cityName
         }
