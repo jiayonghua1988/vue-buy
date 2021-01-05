@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="container2">
     <div class="base_info">
       <div class="item_wrap" @click="showSexDialog">
@@ -10,14 +11,6 @@
           <span class="right_label">{{sex}}</span>
           <i class="iconfont">&#xe87b;</i>
         </section>
-        <van-popup v-model="showPickerSex" round position="bottom">
-            <van-picker
-            show-toolbar
-            :columns="sexColumns"
-            @cancel="showPickerSex = false"
-            @confirm="sexConfirm"
-            />
-        </van-popup>
       </div>
       <div class="item_wrap border_none" @click="showGradeDialog">
         <section>
@@ -32,6 +25,25 @@
     </div>
     <section class="btn_submit">完成</section>
   </div>
+  <van-popup v-model="showPickerSex" round position="bottom">
+            <van-picker
+            show-toolbar
+            :columns="sexColumns"
+            @cancel="showPickerSex = false"
+            @confirm="sexConfirm"
+            />
+        </van-popup>
+
+          <van-popup v-model="showPickerGrade" round position="bottom">
+            <van-picker
+            show-toolbar
+            :columns="gradeColumns"
+            @cancel="showPickerGrade = false"
+            @confirm="gradeConfirm"
+            />
+        </van-popup>
+
+  </div>
 </template>
 <script>
 export default {
@@ -41,7 +53,21 @@ export default {
       grade: '小学一年级',
       showPickerSex: false,
       showPickerGrade: false,
-      sexColumns: ['男', '女']
+      sexColumns: ['男', '女'],
+      gradeColumns: [
+        {
+          values: ['小学一年级', '小学二年级', '小学三年级', '小学四年级'],
+          defaultIndex: 3
+        },
+        {
+          values: ['111', '22', '333', '444'],
+          defaultIndex: 2
+        },
+        {
+          values: ['A', 'B', 'C', 'D'],
+          defaultIndex: 1
+        }
+      ]
     }
   },
   methods: {
@@ -49,12 +75,15 @@ export default {
       this.showPickerSex = true
     },
     showGradeDialog () {
-
+      this.showPickerGrade = true
     },
     sexConfirm (value) {
       this.showPickerSex = false
-      console.log('value=' + value)
-      console.log('showPickerSex=' + this.showPickerSex)
+      this.sex = value
+    },
+    gradeConfirm (value) {
+      this.showPickerGrade = false
+      console.log('gradeConfirm....' + value)
     }
   }
 }

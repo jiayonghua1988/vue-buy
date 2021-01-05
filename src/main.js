@@ -12,7 +12,7 @@ import 'lib-flexible/flexible'
 import axios from 'axios'
 
 //  导入 vant Toast
-import { Toast, IndexBar, IndexAnchor, Cell, Picker, Popup } from 'vant'
+import { Toast, IndexBar, IndexAnchor, Cell, Picker, Popup, Field } from 'vant'
 import 'vant/lib/index.css'
 
 import './style/resetcss.css'
@@ -28,6 +28,7 @@ Vue.use(Cell)
 Vue.use(Map)
 Vue.use(Picker)
 Vue.use(Popup)
+Vue.use(Field)
 
 // 初始化vue-amap
 Map.initAMapApiLoader({
