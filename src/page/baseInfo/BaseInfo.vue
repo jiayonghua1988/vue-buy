@@ -54,19 +54,20 @@ export default {
       showPickerSex: false,
       showPickerGrade: false,
       sexColumns: ['男', '女'],
+      gradeNum: [],
       gradeColumns: [
-        {
-          values: ['小学一年级', '小学二年级', '小学三年级', '小学四年级'],
-          defaultIndex: 3
-        },
-        {
-          values: ['111', '22', '333', '444'],
-          defaultIndex: 2
-        },
-        {
-          values: ['A', 'B', 'C', 'D'],
-          defaultIndex: 1
-        }
+        // {
+        //   values: ['小学一年级', '小学二年级', '小学三年级', '小学四年级', '小学五年级', '小学六年级', '初中一年级', '初中二年级', '初中三年级', '高中一年级', '高中二年级', '高中三年级'],
+        //   defaultIndex: 3
+        // },
+        // {
+        //   values: ['无', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'G', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+        //   defaultIndex: 2
+        // },
+        // {
+        //   values: this.gradeNum,
+        //   defaultIndex: 1
+        // }
       ]
     }
   },
@@ -84,7 +85,23 @@ export default {
     gradeConfirm (value) {
       this.showPickerGrade = false
       console.log('gradeConfirm....' + value)
+    },
+    num1000 () {
+      this.gradeNum = []
+      for (let i; i < 1001; i++) {
+        this.gradeNum.push(i + '班')
+      }
     }
+  },
+  mounted () {
+    const grade1 = ['小学一年级', '小学二年级', '小学三年级', '小学四年级', '小学五年级', '小学六年级', '初中一年级', '初中二年级', '初中三年级', '高中一年级', '高中二年级', '高中三年级']
+    const gradeItem2 = ['无', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'G', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    const gradeNum = []
+    for (let i; i < 1001; i++) {
+      gradeNum.push(i + '班')
+    }
+
+    this.
   }
 }
 </script>
