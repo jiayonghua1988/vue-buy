@@ -35,6 +35,13 @@ const routes = [
     meta: {
       title: '基本信息'
     }
+  },
+  {
+    path: '/main',
+    component: () => import('../page/main/main.vue'),
+    meta: {
+      title: '首页'
+    }
   }
 ]
 

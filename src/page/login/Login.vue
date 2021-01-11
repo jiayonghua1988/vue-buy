@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   data () {
     return {
@@ -34,7 +35,10 @@ export default {
     },
     btnCodeStyle: function () {
       return this.phone.length > 0 && !this.timeInterval ? 'btn_code' : 'btn_code_disable'
-    }
+    },
+    ...mapMutations([
+      'saveUserId'
+    ])
   },
   methods: {
     getPhoneCode () {
@@ -82,7 +86,12 @@ export default {
         }
       }).then(res => {
         if (res.data.code === 0) {
+          console.log(JSON.stringify(res))
           this.$toast.success('登录成功')
+          const userId = res.data.data.userInfo.securityId
+          console.log('userId=$userId')
+          debugger
+          this.$store.commit('saveUserId', userId)
           this.$router.push({
             path: '/city'
           })

@@ -23,7 +23,7 @@
         </section>
       </div>
     </div>
-    <section class="btn_submit">完成</section>
+    <section class="btn_submit" @click="modifyUserInfo">完成</section>
   </div>
   <van-popup v-model="showPickerSex" round position="bottom">
             <van-picker
@@ -46,6 +46,7 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -55,21 +56,13 @@ export default {
       showPickerGrade: false,
       sexColumns: ['男', '女'],
       gradeNum: [],
-      gradeColumns: [
-        // {
-        //   values: ['小学一年级', '小学二年级', '小学三年级', '小学四年级', '小学五年级', '小学六年级', '初中一年级', '初中二年级', '初中三年级', '高中一年级', '高中二年级', '高中三年级'],
-        //   defaultIndex: 3
-        // },
-        // {
-        //   values: ['无', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'G', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
-        //   defaultIndex: 2
-        // },
-        // {
-        //   values: this.gradeNum,
-        //   defaultIndex: 1
-        // }
-      ]
+      gradeColumns: []
     }
+  },
+  computed: {
+    ...mapState(
+      ['userId']
+    )
   },
   methods: {
     showSexDialog () {
@@ -85,23 +78,47 @@ export default {
     gradeConfirm (value) {
       this.showPickerGrade = false
       console.log('gradeConfirm....' + value)
+      const array = value.toString().split(',')
+      this.grade = `${array[0]}(${array[1] === '无' ? '' : array[1]}${array[2]})`
     },
     num1000 () {
       this.gradeNum = []
       for (let i; i < 1001; i++) {
         this.gradeNum.push(i + '班')
       }
+    },
+    initGradeData () {
+      const grade1 = ['小学一年级', '小学二年级', '小学三年级', '小学四年级', '小学五年级', '小学六年级', '初中一年级', '初中二年级', '初中三年级', '高中一年级', '高中二年级', '高中三年级']
+      const gradeItem2 = ['无', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'G', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+      const gradeNum = []
+      for (let i = 1; i < 1001; i++) {
+        gradeNum.push(i + '班')
+      }
+
+      this.gradeColumns.push({
+        values: grade1,
+        defaultIndex: 3
+      })
+      this.gradeColumns.push({
+        values: gradeItem2,
+        defaultIndex: 2
+      })
+      this.gradeColumns.push({
+        values: gradeNum,
+        defaultIndex: 1
+      })
+    },
+    modifyUserInfo () {
+      // console.log('userId=' + this.$store.userId)
+      // this.$axios({
+      //   url: 'api/user/parents/update/$userId',
+      //   methods: 'PUT'
+      // })
+      this.$router.push('/main')
     }
   },
   mounted () {
-    const grade1 = ['小学一年级', '小学二年级', '小学三年级', '小学四年级', '小学五年级', '小学六年级', '初中一年级', '初中二年级', '初中三年级', '高中一年级', '高中二年级', '高中三年级']
-    const gradeItem2 = ['无', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'G', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-    const gradeNum = []
-    for (let i; i < 1001; i++) {
-      gradeNum.push(i + '班')
-    }
-
-    this.
+    this.initGradeData()
   }
 }
 </script>
@@ -114,15 +131,16 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding: 20px 20px;
   }
   .base_info {
     border-radius: 20px;
     box-shadow: 0px 2px 13px 0px rgba(0, 0, 0, 0.05);
-    margin: 20px;
     display: flex;
     flex-direction: column;
-    width: 710px;
     background: #fff;
+    width:100%;
+    box-sizing: border-box;
   }
   .btn_submit {
     width: 90%;
