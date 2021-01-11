@@ -1,15 +1,19 @@
 <template>
   <div>
-    <p>{{msg}}</p>
-    <p>{{this.$store.state.count}}</p>
-    <p>userId: {{this.$store.state.userId}}</p>
-    <p>userId: {{userId}}</p>
+    <section class="grade_wrapper">
+
+    </section>
+    <van-swipe class="my-swipe" indicator-color="white">
+      <van-swipe-item>1</van-swipe-item>
+      <van-swipe-item>2</van-swipe-item>
+      <van-swipe-item>3</van-swipe-item>
+      <van-swipe-item>4</van-swipe-item>
+    </van-swipe>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-// import { mapState, mapMutations, mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -27,5 +31,16 @@ export default {
 </script>
 
 <style>
-
+  .my-swipe .van-swipe-item {
+    color: #fff;
+    font-size: 20px;
+    line-height: 300px;
+    text-align: center;
+    background-color: #39a9ed;
+  }
+  .grade_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 </style>
