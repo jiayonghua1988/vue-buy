@@ -21,6 +21,8 @@ import './assets/iconfont/iconfont.css'
 // 引入 vue-amap
 import Map from 'vue-amap'
 
+Vue.prototype.$imageUrl = 'https://peidian-dev.oss-cn-shanghai.aliyuncs.com/'
+
 Vue.use(Toast)
 Vue.use(IndexBar)
 Vue.use(IndexAnchor)

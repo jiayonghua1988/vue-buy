@@ -37,7 +37,8 @@ export default {
       return this.phone.length > 0 && !this.timeInterval ? 'btn_code' : 'btn_code_disable'
     },
     ...mapMutations([
-      'saveUserId'
+      'saveUserId',
+      'saveToken'
     ])
   },
   methods: {
@@ -89,9 +90,11 @@ export default {
           console.log(JSON.stringify(res))
           this.$toast.success('登录成功')
           const userId = res.data.data.userInfo.securityId
-          console.log('userId=$userId')
-          debugger
+          const token = res.data.data.token
+          console.log('userId=' + userId)
+          console.log('token=' + token)
           this.$store.commit('saveUserId', userId)
+          this.$store.commit('saveToken', token)
           this.$router.push({
             path: '/city'
           })

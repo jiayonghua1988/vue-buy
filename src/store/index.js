@@ -7,12 +7,18 @@ export default new Vuex.Store({
   // 要设置的全局访问的state对象
   state: {
     // 要设置的初始化值
-    userId: ''
+    userId: '',
+    token: ''
   },
   // 更改Vuex的store中的状态值
   mutations: {
     saveUserId (state, userId) {
       state.userId = userId
+      sessionStorage.setItem('userId', userId)
+    },
+    saveToken (state, token) {
+      state.token = token
+      sessionStorage.setItem('token', token)
     }
   },
   //   处理异步更改  提交 mutations，而不是直接更改状态 异步操作  触发变更 通过storestore.dispatch 进行分发action
@@ -27,6 +33,12 @@ export default new Vuex.Store({
   getters: {
     getCount: state => {
       return state.count + 1
+    },
+    getUserId: state => {
+      return state.userId === '' ? sessionStorage.getItem('userId') : state.userId
+    },
+    getToken: state => {
+      return state.token === '' ? sessionStorage.getItem('token') : state.token
     }
   }
 })
