@@ -2,15 +2,42 @@
   <div>
     <section class="grade_wrapper">
     </section>
-    <van-swipe class="my-swipe" indicator-color="#F1F0F0">
+    <van-swipe class="my-swipe" indicator-color="#000000" :loop="false">
       <van-swipe-item class="swipe-item" v-for="(parentItem,pIndex) in subjects" :key="pIndex">
         <section class="swipe-item-bg" v-for="(item,index) in parentItem" :key="index">
           <section class="swipe-item-content">
               <img :src="getSubjectIconUrl(item.subjectIcon)" v-if="item.subjectIcon.includes('customizeIcon')"/>
-              <span v-else class="iconfont subject-item">{{getSubjectIconUrl(item.subjectIcon)}}</span>
+              <!--  英语 -->
+              <span v-else-if="item.subjectIcon === 'icon-en-'" class="iconfont subject-item" style="color:#DB80FB;">&#xe618;</span>
+              <!-- 物理 -->
+              <span v-else-if="item.subjectIcon === 'icon-physics-'" class="iconfont subject-item" style="color:#FF7C75;">&#xe61c;</span>
+              <!-- 化学 -->
+              <span v-else-if="item.subjectIcon === 'icon-chemistry-'" class="iconfont subject-item" style="color:#2DC1F9;"> &#xe60e; </span>
+              <!--  历史-->
+             <span v-else-if="item.subjectIcon === 'icon-history-'" class="iconfont subject-item" style="color:#E7B66E;"> &#xe61a; </span>
+             <!-- 生物 -->
+             <span v-else-if="item.subjectIcon === 'icon-biology-'" class="iconfont subject-item" style="color:#FD991D;"> &#xe616; </span>
+             <!-- 地理 -->
+             <span v-else-if="item.subjectIcon === 'icon-geography-'" class="iconfont subject-item" style="color:#DB80FB;"> &#xe615; </span>
+             <!-- 政治 -->
+             <span v-else-if="item.subjectIcon === 'icon-politics-'" class="iconfont subject-item" style="color:#5BD380;"> &#xe60b; </span>
+             <!-- 奥数 -->
+             <span v-else-if="item.subjectIcon === 'icon-mathematical-'" class="iconfont subject-item" style="color:#FD991D;"> &#xe619; </span>
+             <span v-else-if="item.subjectIcon === 'icon-custom-'" class="iconfont subject-item" style="color:#ED89F3;"> &#xe64c; </span>
+             <span v-else-if="item.subjectIcon === 'icon-custom-1'" class="iconfont subject-item" style="color:#FA987F;"> &#xe64d; </span>
+             <span v-else-if="item.subjectIcon === 'icon-custom-2'" class="iconfont subject-item" style="color:#1AC8FB;"> &#xe64e; </span>
+             <span v-else-if="item.subjectIcon === 'icon-custom-3'" class="iconfont subject-item" style="color:#FAAB21;"> &#xe600; </span>
+             <span v-else-if="item.subjectIcon === 'icon-custom-4'" class="iconfont subject-item" style="color:#FAA230;"> &#xe602; </span>
+             <span v-else-if="item.subjectIcon === 'icon-custom-5'" class="iconfont subject-item" style="color:#82EAA4;"> &#xe652; </span>
+             <span v-else-if="item.subjectIcon === 'icon-custom-6'" class="iconfont subject-item" style="color:#ED88F4;"> &#xe653; </span>
+             <span v-else-if="item.subjectIcon === 'icon-custom-7'" class="iconfont subject-item" style="color:#F77F81;"> &#xe657; </span>
+             <span v-else-if="item.subjectIcon === 'icon-zhifeiji'" class="iconfont subject-item" style="color:#FD991D;"> &#xe605; </span>
+             <span v-else-if="item.subjectIcon === 'icon-bianzu1'" class="iconfont subject-item" style="color:#FD991D;"> &#xe604; </span>
+             <!-- 其他 -->
+             <span v-else ></span>
           <p>
-            <span>{{item.subjectName}}</span>
-            <span class="problemCount">{{item.problemCount}}</span>
+            <span>{{item.subjectName}}/</span>
+            <span :class="{'problemCount-red':item.subjectName == '未整理','problemCount-normal': item.subjectName != '未整理'}">{{item.problemCount}}</span>
           </p>
           </section>
 
@@ -80,41 +107,12 @@ export default {
       let iconUrl = ''
       if (subjectIcon.includes('customizeIcon')) {
         iconUrl = this.$imageUrl.concat(subjectIcon)
-      } else {
-        switch (subjectIcon) {
-          case 'icon-en-': // 英语
-            iconUrl = '&#xe618;'
-            break
-          case 'icon-physics-':// 物理
-            iconUrl = '&#xe61c;'
-            break
-          case 'icon-chemistry-':// 化学
-            iconUrl = '&#xe60e;'
-            break
-          case 'icon-history-':// 历史
-            iconUrl = '&#xe61a;'
-            break
-          case 'icon-biology-':// 生物
-            iconUrl = '&#xe616;'
-            break
-          case 'icon-geography-':// 地理
-            iconUrl = '&#xe615;'
-            break
-          case 'icon-politics-':// 政治
-            iconUrl = '&#xe60b;'
-            break
-          case 'icon-mathematical-':
-            iconUrl = '&#xe619;'
-            break
-          default:
-            iconUrl = '&#xe619;'
-            break
-        }
       }
       return iconUrl
     },
     getSubjectByParentId () {
       const that = this
+      this.subjects = []
       const userId = sessionStorage.getItem('userId')
       this.$axios({
         url: '/api/problem/subject/searchSubjectDTOByParentId?parentId=' + userId,
@@ -202,14 +200,21 @@ export default {
   }
   .swipe-item-content > img {
     width: 64px;
-    height: 53px;
     margin-bottom: 30px;
     align-self: center;
   }
-  .problemCount {
+    .swipe-item-content > span {
+    margin-bottom: 30px;
+    align-self: center;
+    font-size: 60px;
+  }
+  .problemCount-red {
     color: #D51E1E;
   }
+  .problemCount-normal {
+    color: #1B1B1F;
+  }
   .subject-item {
-    width: 53px;
+    width: 50px;
   }
 </style>
