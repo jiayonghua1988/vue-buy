@@ -25,3 +25,26 @@ import './assets/iconfont/iconfont.css'
 ```
 <span class="iconfont">&#xe773;</span>
 ```
+#### 6.修改图标大小和图标颜色
+```
+.iconSize {
+  // 控制图标大小
+  font-size:50px;
+  // 控制图标颜色
+  color: red;
+}
+
+<span class="iconfont iconSize">&#xe773;</span>
+
+```
+
+#### 7.注意事项
+```
+.iconfont {
+// 控制图标大小
+  font-size:50px;
+  // 控制图标颜色
+  color: red;
+}
+就会导致所有的iconfont图标的大小和颜色都改变了，禁止这样使用
+```
