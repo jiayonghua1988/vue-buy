@@ -1,6 +1,12 @@
 <template>
   <div>
+    <p>this.$sendPhoneUrl('13333333')</p>
     <section class="grade_wrapper">
+      <section>
+        <img :src="avatarUrl(userInfo.imageKey)" alt="" class="user-image-key">
+        <span class="grade-name"></span>
+      </section>
+      <span class="iconfont icon-settings">&#xe766;</span>
     </section>
     <van-swipe class="my-swipe" indicator-color="#000000" :loop="false">
       <van-swipe-item class="swipe-item" v-for="(parentItem,pIndex) in subjects" :key="pIndex">
@@ -49,10 +55,12 @@
 
 <script>
 import { mapState } from 'vuex'
+import { hello, aa } from '../../assets/utils'
 export default {
   data () {
     return {
       msg: 'aaa',
+      userInfo: {},
       subjects: [
         [
           {
@@ -106,7 +114,7 @@ export default {
     getSubjectIconUrl (subjectIcon) {
       let iconUrl = ''
       if (subjectIcon.includes('customizeIcon')) {
-        iconUrl = this.$imageUrl.concat(subjectIcon)
+        iconUrl = this.$imageUrl + subjectIcon
       }
       return iconUrl
     },
@@ -151,10 +159,32 @@ export default {
           console.log('封装后的数据=' + JSON.stringify(that.subjects))
         }
       })
+    },
+    avatarUrl (iconUrl) {
+      return this.$imageUrl + iconUrl
+    },
+    getUserParent () {
+      this.$axios({
+        url: '/api/user/parents/' + sessionStorage.getItem('userId'),
+        method: 'GET',
+        params: {},
+        headers: {
+          'x-client-token-user': this.token
+        }
+      }).then(res => {
+        console.log('获取家长信息:' + JSON.stringify(res))
+        if (res.data.code === 0) {
+          this.userInfo = res.data.data
+          // this.userInfo.imageKey = this.$imageUrl + this.userInfo.imageKey
+        }
+      })
     }
   },
   mounted: function () {
     this.getSubjectByParentId()
+    this.getUserParent()
+    console.log('aa= ' + aa)
+    hello()
   }
 }
 </script>
@@ -216,5 +246,18 @@ export default {
   }
   .subject-item {
     width: 50px;
+  }
+  .icon-settings {
+    font-size: 48px;
+    color: #69DC6B;
+  }
+  .user-image-key {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  .grade-name {
+    color: #1B1B1F;
+    font-size: 32px;
   }
 </style>

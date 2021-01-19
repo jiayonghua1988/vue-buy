@@ -38,6 +38,7 @@
 </template>
 <script>
 import cityData from '../../assets/citys.json'
+import { getCity } from '../../assets/requestUrl'
 export default {
   data () {
     return {
@@ -78,16 +79,11 @@ export default {
     },
     // 获取 当前城市
     getCurrentCity () {
-      this.$axios({
-        url: 'https://restapi.amap.com/v3/ip?key=5c67b80bd27297a360b9db433f3ea74f',
-        method: 'get',
-        params: {}
-      }).then(res => {
-        if (res.data.status === '1') {
-          this.currentCity = res.data.city
-        } else {
-          this.currentCity = '定位失败'
-        }
+      getCity(res => {
+        this.currentCity = res.data.city
+      },
+      res => {
+        this.currentCity = '定位失败'
       })
     },
     gotoNext (cityName) {

@@ -8,31 +8,15 @@ import store from './store'
 // px 转rem
 import 'lib-flexible/flexible'
 
-// 导入  axios 网络请求框架
-import axios from 'axios'
-
-//  导入 vant Toast
-import { Toast, IndexBar, IndexAnchor, Cell, Picker, Popup, Field, Swipe, SwipeItem } from 'vant'
-import 'vant/lib/index.css'
-
 import './style/resetcss.css'
 // 导入iconfont
 import './assets/iconfont/iconfont.css'
 // 引入 vue-amap
 import Map from 'vue-amap'
+import './vant/vant'
+import './assets/requestUrl'
 
 Vue.prototype.$imageUrl = 'https://peidian-dev.oss-cn-shanghai.aliyuncs.com/'
-
-Vue.use(Toast)
-Vue.use(IndexBar)
-Vue.use(IndexAnchor)
-Vue.use(Cell)
-Vue.use(Map)
-Vue.use(Picker)
-Vue.use(Popup)
-Vue.use(Field)
-Vue.use(Swipe)
-Vue.use(SwipeItem)
 
 // 初始化vue-amap
 Map.initAMapApiLoader({
@@ -43,11 +27,6 @@ Map.initAMapApiLoader({
   // 高德 sdk 版本，默认为 1.4.4
   uiVersion: '1.0.11'
 })
-
-//  全局变量
-Vue.prototype.$axios = axios
-axios.defaults.baseURL = '/web/'
-Vue.config.productionTip = false
 
 new Vue({
   router,

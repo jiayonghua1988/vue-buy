@@ -17,6 +17,7 @@
 
 <script>
 import { mapMutations } from 'vuex'
+import { sendPhone, authPhone } from '../../assets/requestUrl'
 export default {
   data () {
     return {
@@ -60,47 +61,30 @@ export default {
           }
         }, 1000)
       }
-      this.$axios({
-        url: '/auth/validateCode/send?phone=' + this.phone,
-        method: 'get',
-        params: {}
-      }).then(res => {
-        const isSuccess = res.data.code === 0
-        if (isSuccess) {
-          this.$toast.success('验证码已发送')
-        } else {
-          this.$toast.fail(res.data.message)
-        }
+
+      sendPhone(this.phone, res => {
+        this.$toast.success('验证码已发送')
       })
     },
     login () {
-      this.$axios({
-        url: '/auth/phone',
-        method: 'post',
-        data: {
-          phone: this.phone,
-          verifyCode: this.code,
-          userType: 'P',
-          source: 3,
-          register: true,
-          device: 'Android-Parent'
-        }
-      }).then(res => {
-        if (res.data.code === 0) {
-          console.log(JSON.stringify(res))
-          this.$toast.success('登录成功')
-          const userId = res.data.data.userInfo.securityId
-          const token = res.data.data.token
-          console.log('userId=' + userId)
-          console.log('token=' + token)
-          this.$store.commit('saveUserId', userId)
-          this.$store.commit('saveToken', token)
-          this.$router.push({
-            path: '/city'
-          })
-        } else {
-          this.$toast.fail(res.data.message)
-        }
+      authPhone({
+        phone: this.phone,
+        verifyCode: this.code,
+        userType: 'P',
+        source: 3,
+        register: true,
+        device: 'Android-Parent'
+      }, res => {
+        this.$toast.success('登录成功')
+        const userId = res.data.data.userInfo.securityId
+        const token = res.data.data.token
+        console.log('userId=' + userId)
+        console.log('token=' + token)
+        this.$store.commit('saveUserId', userId)
+        this.$store.commit('saveToken', token)
+        this.$router.push({
+          path: '/city'
+        })
       })
     },
     phoneChange () {
