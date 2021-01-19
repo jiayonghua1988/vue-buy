@@ -1,10 +1,9 @@
 <template>
   <div>
-    <button @click="hello()">fsfd</button>
     <section class="grade_wrapper">
-      <section>
+      <section class="grade-left">
         <img :src="avatarUrl(userInfo.imageKey)" alt="" class="user-image-key">
-        <span class="grade-name"></span>
+        <span class="grade-name"><span class="font-bold">{{userInfo.nickName}}</span>  ({{grade}})</span>
       </section>
       <span class="iconfont icon-settings">&#xe766;</span>
     </section>
@@ -55,58 +54,26 @@
 
 <script>
 import { mapState } from 'vuex'
-import { hello, aa } from '../../assets/utils'
+import { hello, aa, userId, gradeStr } from '../../assets/utils'
 export default {
   data () {
     return {
       msg: 'aaa',
       userInfo: {},
-      subjects: [
-        [
-          {
-            problemCount: 0,
-            subjectIcon: 'https://peidian-dev.oss-cn-shanghai.aliyuncs.com/customizeIcon/PROBLEM_SUBJECT/unFinished.png',
-            subjectId: 0,
-            subjectName: '未整理',
-            subjectCode: 'WFL',
-            parentId: 0
-          },
-          {
-            problemCount: 0,
-            subjectIcon: 'https://peidian-dev.oss-cn-shanghai.aliyuncs.com/customizeIcon/PROBLEM_SUBJECT/alreadyProcessed.png',
-            subjectId: 99,
-            subjectName: '已拆题',
-            subjectCode: 'YC',
-            parentId: 0
-          },
-          {
-            problemCount: 0,
-            subjectIcon: 'https://peidian-dev.oss-cn-shanghai.aliyuncs.com/customizeIcon/PROBLEM_SUBJECT/timeAlbum.png',
-            subjectId: 51,
-            subjectName: '时光相册',
-            subjectCode: '',
-            parentId: 0
-          },
-          {
-            problemCount: 0,
-            subjectIcon: 'https://peidian-dev.oss-cn-shanghai.aliyuncs.com/customizeIcon/PROBLEM_SUBJECT/teaching.png',
-            subjectId: 50,
-            subjectName: '讲义教辅',
-            subjectCode: '',
-            parentId: 0
-          }
-        ]
-      ]
+      subjects: []
     }
   },
   computed: {
     ...mapState({
       userId () {
-        return this.$store.state.userId === '' ? sessionStorage.getItem('userId')
+        return this.$store.state.userId === '' ? userId()
           : this.$store.state.userId
       },
       token () {
         return this.$store.state.token === '' ? sessionStorage.getItem('token') : this.$store.state.token
+      },
+      grade () {
+        return gradeStr(this.userInfo.grade)
       }
     })
   },
@@ -205,6 +172,8 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding:10px 20px;
+    align-items: center;
   }
   .swipe-item {
     background: #fff;
@@ -263,5 +232,14 @@ export default {
   .grade-name {
     color: #1B1B1F;
     font-size: 32px;
+    margin-left: 20px;
+  }
+  .grade-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .font-bold {
+    font-weight: 900;
   }
 </style>
