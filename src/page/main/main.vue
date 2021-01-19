@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>this.$sendPhoneUrl('13333333')</p>
+    <button @click="hello()">fsfd</button>
     <section class="grade_wrapper">
       <section>
         <img :src="avatarUrl(userInfo.imageKey)" alt="" class="user-image-key">
@@ -111,6 +111,10 @@ export default {
     })
   },
   methods: {
+    test () {
+      hello()
+      console.log('aa=' + aa)
+    },
     getSubjectIconUrl (subjectIcon) {
       let iconUrl = ''
       if (subjectIcon.includes('customizeIcon')) {
