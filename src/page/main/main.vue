@@ -376,6 +376,8 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+   margin-left: 25px;
 }
 .manager-content-grid-item {
   width: 335px;
