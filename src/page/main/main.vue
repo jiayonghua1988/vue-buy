@@ -64,6 +64,37 @@
     </van-swipe-item>
   </van-swipe>
 
+  <section class="manager-title">
+    <span class="m-title">管理晓方块</span>
+    <section class="btn-send">
+      <i class="iconfont icon-send">&#xe605;</i>
+      <span class="send-text">发小纸条</span>
+    </section>
+  </section>
+  <section class="manager-content-grid">
+    <section class="manager-content-grid-item">
+      <img :src="bindIcon" alt="" class="manager-content-grid-icon">
+      <span class="manager-content-grid-label">立即绑定</span>
+    </section>
+    <section class="manager-content-grid-item">
+      <section class="manager-content-grid-item">
+      <img :src="documentIcon" alt="" class="manager-content-grid-icon">
+      <span class="manager-content-grid-label">文档下载</span>
+    </section>
+    </section>
+    <section class="manager-content-grid-item">
+      <section class="manager-content-grid-item">
+      <img :src="comboIcon" alt="" class="manager-content-grid-icon">
+      <span class="manager-content-grid-label">管家套餐</span>
+    </section>
+    </section>
+    <section class="manager-content-grid-item">
+      <section class="manager-content-grid-item">
+      <img :src="familyIcon" alt="" class="manager-content-grid-icon">
+      <span class="manager-content-grid-label">家庭成长值</span>
+    </section>
+    </section>
+  </section>
   </div>
 </template>
 
@@ -73,13 +104,29 @@ import { hello, aa, userId, gradeStr } from '../../assets/utils'
 import Banner1 from '../../assets/images/homeBanner/icon_home_banner_1.png'
 import Banner2 from '../../assets/images/homeBanner/icon_home_banner_2.png'
 import Banner3 from '../../assets/images/homeBanner/icon_home_banner_3.png'
+import BindIcon from '../../assets/images/homeBanner/icon-home-bind.png'
+import BindText from '../../assets/images/homeBanner/icon-home-bind-text.png'
+import DocumentIcon from '../../assets/images/homeBanner/icon-document-download.png'
+import DocumentText from '../../assets/images/homeBanner/icon-document-download-text.png'
+import ComboIcon from '../../assets/images/homeBanner/icon-home-combo.png'
+import ComboText from '../../assets/images/homeBanner/icon-home-combo-text.png'
+import FamilyIcon from '../../assets/images/homeBanner/icon-home-family.png'
+import FamilyText from '../../assets/images/homeBanner/icon-home-family-text.png'
 export default {
   data () {
     return {
       msg: 'aaa',
       userInfo: {},
       subjects: [],
-      images: [Banner1, Banner2, Banner3]
+      images: [Banner1, Banner2, Banner3],
+      bindIcon: BindIcon,
+      bindText: BindText,
+      documentIcon: DocumentIcon,
+      documentText: DocumentText,
+      comboIcon: ComboIcon,
+      comboText: ComboText,
+      familyIcon: FamilyIcon,
+      familyText: FamilyText
     }
   },
   computed: {
@@ -300,5 +347,55 @@ export default {
 .ad-banner-item {
   height: 180px;
   margin: 10px;
+}
+.manager-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+  align-items: center;
+}
+.m-title {
+  color: #000000;
+  font-size: 32px;
+}
+.btn-send {
+  border-radius: 45px;
+  border: 2px solid #87D878;
+  padding: 10px 20px;
+}
+.icon-send {
+  font-size: 34px;
+  color: #69DC6B;
+}
+.send-text {
+  font-size: 28px;
+  color: #69DC6B;
+}
+.manager-content-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.manager-content-grid-item {
+  width: 335px;
+  height: 137px;
+  border-radius: 10px;
+  background: #F4F4F4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
+  box-sizing: content-box;
+}
+.manager-content-grid-icon {
+  width: 60px;
+  height: 60px;
+  margin-left: 40px;
+}
+.manager-content-grid-label {
+  font-size: 35px;
+  color: #000;
+  margin-left: 20px;
 }
 </style>
