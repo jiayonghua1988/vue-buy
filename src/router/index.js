@@ -42,6 +42,41 @@ const routes = [
     meta: {
       title: '首页'
     }
+  },
+  {
+    path: '/demo/tabbar',
+    component: () => import('../page/demo/tabBar.vue'),
+    meta: {
+      title: 'Tabbar 示例'
+    }
+  },
+  {
+    path: '/demo/tabbar/demo1',
+    component: () => import('../page/demo/tabbarDemo1.vue'),
+    meta: {
+      title: '标签1'
+    }
+  },
+  {
+    path: '/demo/tabbar/demo2',
+    component: () => import('../page/demo/tabbarDemo2.vue'),
+    meta: {
+      title: '标签2'
+    }
+  },
+  {
+    path: '/demo/tabbar/demo3',
+    component: () => import('../page/demo/tabbarDemo3.vue'),
+    meta: {
+      title: '标签3'
+    }
+  },
+  {
+    path: '/demo/tabbar/demo4',
+    component: () => import('../page/demo/tabbarDemo4.vue'),
+    meta: {
+      title: '标签4'
+    }
   }
 ]
 
