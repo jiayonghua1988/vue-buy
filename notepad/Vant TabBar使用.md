@@ -85,3 +85,5 @@ export default {
     ]
   }
 ```
+### 想默认显示第一个tabbar的内容
+>  把children:[] 路由中的path 设置成和付 route 的path一样就可以了  /demo/tabbar
