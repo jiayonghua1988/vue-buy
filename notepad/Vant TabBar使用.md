@@ -91,3 +91,7 @@ export default {
 
 ### Tabbar 挡住了页面内容
 >   在router-view  下面增加  <div style="height: 5rem;"></div>
+
+```
+<div style="height:5rem;"></div>
+```
