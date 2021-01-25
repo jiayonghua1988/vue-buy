@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="aa">
     {{message}}
   </div>
 </template>
@@ -14,6 +14,8 @@ export default {
 }
 </script>
 
-<style lang="less">
-
+<style>
+.aa {
+  background-color: red;
+}
 </style>

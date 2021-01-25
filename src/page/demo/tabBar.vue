@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view/>
+    <router-view class="content"/>
     <van-tabbar :route="true"  v-model="active" class="tabbar-height">
         <van-tabbar-item replace to='/demo/tabbar/demo1' icon="home-o">标签1</van-tabbar-item>
         <van-tabbar-item replace to='/demo/tabbar/demo2' icon="search">标签2</van-tabbar-item>
@@ -30,13 +30,10 @@ export default {
   width: 100%;
   height: 100%;
 }
-.content {
-
-}
-.red {
-  background: red;
-}
 .tabbar-height {
   height: 100px;
+}
+.content {
+  height: 100vh;
 }
 </style>
