@@ -6,6 +6,7 @@
 <template>
   <div>
     <router-view class="content"/>
+    <div style="height:5rem;"></div> // 解决tabbar挡住页面内容问题
     <van-tabbar :route="true"  v-model="active" class="tabbar-height">
         <van-tabbar-item replace to='/demo/tabbar/demo1' icon="home-o">标签1</van-tabbar-item>
         <van-tabbar-item replace to='/demo/tabbar/demo2' icon="search">标签2</van-tabbar-item>
@@ -87,3 +88,6 @@ export default {
 ```
 ### 想默认显示第一个tabbar的内容
 >  把children:[] 路由中的path 设置成和付 route 的path一样就可以了  /demo/tabbar
+
+### Tabbar 挡住了页面内容
+>   在router-view  下面增加  <div style="height: 5rem;"></div>
