@@ -92,6 +92,7 @@ export default {
   height: 151px;
   border-radius: 50%;
   border: solid #F4F4F4 4px;
+  margin-left: 30px;
 }
 .nickname {
   color: #333333;
