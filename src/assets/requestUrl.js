@@ -22,11 +22,19 @@ export function getCity (success, fail) {
   get('https://restapi.amap.com/v3/ip?key=5c67b80bd27297a360b9db433f3ea74f', success, fail)
 }
 
+// 获取家长信息
+export function userParents (parentId, success, fail) {
+  get('/api/user/parents/' + parentId, success, fail)
+}
+
 export function get (url, success, fail) {
   axios({
     url: url,
     method: 'get',
-    params: {}
+    params: {},
+    headers: {
+      'x-client-token-user': sessionStorage.getItem('token')
+    }
   }).then(res => {
     callback(res, success, fail)
   })
@@ -36,7 +44,10 @@ export function post (url, data, success, fail) {
   axios({
     url: url,
     method: 'post',
-    data: data
+    data: data,
+    headers: {
+      'x-client-token-user': sessionStorage.getItem('token')
+    }
   }).then(res => {
     callback(res, success, fail)
   })

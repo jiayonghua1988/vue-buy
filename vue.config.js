@@ -1,4 +1,4 @@
-
+import { url } from './src/assets/const'
 module.exports = {
   // px2rem
   chainWebpack: config => {
@@ -23,7 +23,7 @@ module.exports = {
     proxy: {
       '/web': {
         // target 为请求接口的服务器地址
-        target: 'https://dev11.astarschool.com',
+        target: url,
         changeOrigin: true,
         secure: false,
         pathRewrite: {

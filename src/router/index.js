@@ -41,7 +41,17 @@ const routes = [
     component: () => import('../page/main/main.vue'),
     meta: {
       title: '首页'
-    }
+    },
+    children: [
+      {
+        path: '/main',
+        component: () => import('../page/home/home.vue')
+      },
+      {
+        path: '/main/my',
+        component: () => import('../page/my/my.vue')
+      }
+    ]
   },
   {
     path: '/demo/tabbar',

@@ -1,3 +1,4 @@
+import { imageBase } from './const'
 export const aa = 34
 
 export const hello = () => {
@@ -14,6 +15,10 @@ export const saveUserId = userId => {
 
 export const token = () => {
   return this.$store.state.token
+}
+
+export const imageUrl = link => {
+  return imageBase + link
 }
 
 export const gradeStr = grade => {
