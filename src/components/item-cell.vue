@@ -1,5 +1,5 @@
 <template>
-<div class="flex-row-between bg-color" :class="{'bottom-line' : line}">
+<div class="flex-row-between bg-color" :class="{'bottom-line' : line}" @click="itemClick">
   <section class="flex-row-center">
     <img :src="icon" alt="" class="img-icon">
     <span class="label">{{label}}</span>
@@ -22,7 +22,8 @@ export default {
     icon: String,
     label: String,
     value: String,
-    line: Boolean
+    line: Boolean,
+    itemClick: Function
   }
 }
 </script>
