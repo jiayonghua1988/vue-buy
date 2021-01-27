@@ -77,6 +77,8 @@ export default {
 <style scope>
 .my-wrapper {
   background-color: #f4f4f4;
+  height: 100vh;
+  box-sizing: border-box;
 }
 .user-info-wrapper {
   height: 324px;

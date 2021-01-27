@@ -1,4 +1,4 @@
-import { url } from './src/assets/const'
+const url = 'https://sit.astarschool.com'
 module.exports = {
   // px2rem
   chainWebpack: config => {
