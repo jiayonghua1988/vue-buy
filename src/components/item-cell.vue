@@ -22,8 +22,12 @@ export default {
     icon: String,
     label: String,
     value: String,
-    line: Boolean,
-    itemClick: Function
+    line: Boolean
+  },
+  methods: {
+    itemClick () {
+      this.$emit('cellClick')
+    }
   }
 }
 </script>

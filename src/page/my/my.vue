@@ -12,7 +12,7 @@
   </section>
 
 <section>
-  <item-cell label="基本资料" :icon="icon1" class="margin-top10" @itemClick="gotoUserInfo"></item-cell>
+  <item-cell label="基本资料" :icon="icon1" class="margin-top10" @cellClick="gotoUserInfo"></item-cell>
  <item-cell label="晓方块鼓励语" :icon="icon2" value="写一句话鼓励孩子哦~" class="margin-top10" line></item-cell>
 <item-cell label="操作指南" :icon="icon3"></item-cell>
 <item-cell label="用户服务协议" :icon="icon4" class="margin-top10" line></item-cell>
