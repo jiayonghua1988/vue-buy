@@ -1,26 +1,26 @@
 <template>
-<div class="my-wrapper">
-  <section class="user-info-wrapper">
-    <section class="flex-row-center">
-      <img :src="imageKey" alt="" class="head-img">
-      <section class="flex-column">
-        <span class="nickname">{{nickname}}</span>
-        <span class="grade">{{showGrade(grade)}}</span>
+  <div class="my-wrapper">
+    <section class="user-info-wrapper">
+      <section class="flex-row-center">
+        <img :src="imageKey" alt="" class="head-img">
+        <section class="flex-column">
+          <span class="nickname">{{nickname}}</span>
+          <span class="grade">{{showGrade(grade)}}</span>
+        </section>
       </section>
+      <i class="iconfont right-arrow">&#xe87b;</i>
     </section>
-    <i class="iconfont right-arrow">&#xe87b;</i>
+
+  <section>
+    <item-cell label="基本资料" :icon="icon1" class="margin-top10" @cellClick="gotoUserInfo" ></item-cell>
+    <item-cell label="晓方块鼓励语" :icon="icon2" value="写一句话鼓励孩子哦~" class="margin-top10" line @cellClick="clickHearten"></item-cell>
+    <item-cell label="操作指南" :icon="icon3" @cellClick="clickTutorial"></item-cell>
+    <item-cell label="用户服务协议" :icon="icon4" class="margin-top10" line @cellClick="clickService"></item-cell>
+    <item-cell label="关于培典书院" :icon="icon5" @cellClick="clickAbout" value="V1.0"></item-cell>
+    <item-cell label="设置" :icon="icon6" class="margin-top10" @cellClick="clickSettings"></item-cell>
   </section>
 
-<section>
-  <item-cell label="基本资料" :icon="icon1" class="margin-top10" @cellClick="gotoUserInfo"></item-cell>
- <item-cell label="晓方块鼓励语" :icon="icon2" value="写一句话鼓励孩子哦~" class="margin-top10" line></item-cell>
-<item-cell label="操作指南" :icon="icon3"></item-cell>
-<item-cell label="用户服务协议" :icon="icon4" class="margin-top10" line></item-cell>
-<item-cell label="关于培典书院" :icon="icon5"></item-cell>
-<item-cell label="设置" :icon="icon6" class="margin-top10"></item-cell>
-</section>
-
-</div>
+  </div>
 </template>
 
 <script>
@@ -52,6 +52,7 @@ export default {
     ItemCell
   },
   methods: {
+    // 获取用户信息
     getInfo () {
       userParents(sessionStorage.getItem('userId'), (res) => {
         this.nickname = res.data.data.nickName
@@ -61,14 +62,39 @@ export default {
 
       })
     },
+
+    // 转化成班级
     showGrade (g) {
       return gradeStr(g)
     },
+    // 拼接图片的url
     getNetImageUrl (imageKey) {
       return imageUrl(imageKey)
     },
+    // 用户信息
     gotoUserInfo () {
       console.log('用户信息=================')
+    },
+    // 激励语
+    clickHearten () {
+      console.log('激励语===============')
+    },
+    // 指南
+    clickTutorial () {
+      console.log('指南=================')
+    },
+    // 服务协议
+    clickService () {
+      console.log('服务---------------')
+    },
+    // 关于
+    clickAbout () {
+      console.log('关于---------------')
+    },
+    // 设置
+    clickSettings () {
+      console.log('设置-----------')
+      this.$router.push('/settings')
     }
   },
   mounted () {

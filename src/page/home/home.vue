@@ -382,7 +382,7 @@ export default {
   padding-bottom: 100px;
 }
 .manager-content-grid-item {
-  width: 325px;
+  width: 320px;
   height: 137px;
   border-radius: 10px;
   background: #F4F4F4;

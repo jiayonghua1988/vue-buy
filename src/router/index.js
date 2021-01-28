@@ -89,6 +89,13 @@ const routes = [
         }
       }
     ]
+  },
+  {
+    path: '/settings',
+    component: () => import('../page/settings/settings.vue'),
+    meta: {
+      title: '设置'
+    }
   }
 ]
 

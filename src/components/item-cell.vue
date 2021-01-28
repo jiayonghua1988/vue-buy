@@ -53,7 +53,6 @@ export default {
 }
 .img-icon {
   width: 42px;
-  height: 42px;
   padding-left: 20px;
 }
 .bottom-line {
