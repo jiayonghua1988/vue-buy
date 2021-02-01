@@ -77,7 +77,7 @@ export default {
     },
     // 激励语
     clickHearten () {
-      console.log('激励语===============')
+      this.$router.push('/encourage')
     },
     // 指南
     clickTutorial () {
@@ -89,7 +89,7 @@ export default {
     },
     // 关于
     clickAbout () {
-      console.log('关于---------------')
+      this.$router.push('/about')
     },
     // 设置
     clickSettings () {

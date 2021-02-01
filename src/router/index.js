@@ -96,6 +96,20 @@ const routes = [
     meta: {
       title: '设置'
     }
+  },
+  {
+    path: '/about',
+    component: () => import('../page/about/about.vue'),
+    meta: {
+      title: '关于培典书院'
+    }
+  },
+  {
+    path: '/encourage',
+    component: () => import('../page/input/encourage.vue'),
+    meta: {
+      title: '晓方块鼓励语'
+    }
   }
 ]
 
