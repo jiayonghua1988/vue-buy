@@ -132,6 +132,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 20px 20px;
+    box-sizing: border-box;
   }
   .base_info {
     border-radius: 20px;

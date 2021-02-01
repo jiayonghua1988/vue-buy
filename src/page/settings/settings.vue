@@ -4,7 +4,7 @@
       <item-cell label="电话" :icon='iconPhone' :value="phone" line></item-cell>
       <item-cell label="一键清除未读消息" :icon='iconClean'></item-cell>
     </section>
-    <span class="btn-loginout">退出登录/注册</span>
+    <span class="btn-loginout" @click="logout">退出登录/注册</span>
   </div>
 </template>
 
@@ -18,6 +18,18 @@ export default {
       iconPhone: IconPhone,
       iconClean: IconClean,
       phone: '13343223432432'
+    }
+  },
+  methods: {
+    logout () {
+      this.$dialog.confirm(
+        {
+          message: '你确认要退出登录吗？'
+        }).then(() => {
+        console.log('确定------------')
+      }).catch(() => {
+        console.log('取消-------------')
+      })
     }
   },
   components: {
