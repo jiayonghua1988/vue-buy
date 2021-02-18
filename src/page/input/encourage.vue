@@ -4,13 +4,20 @@
       <span class="iconfont input-clear">&#xe696;</span>
       <input type="text" class="input-content" maxlength="30" placeholder="请输入鼓励语">
     </section>
-    <section class="btn-save">保存</section>
+    <section class="save-btn-wrapper">
+      <save-button label="保存" ></save-button>
+    </section>
+
   </div>
 </template>
 
 <script>
-export default {
 
+import saveButton from '../../components/save-button'
+export default {
+  components: {
+    saveButton
+  }
 }
 </script>
 
@@ -52,5 +59,8 @@ export default {
     align-items: center;
     margin: 60px 20px;
     border-radius: 40px;
+  }
+  .save-btn-wrapper {
+    margin: 50px;
   }
 </style>

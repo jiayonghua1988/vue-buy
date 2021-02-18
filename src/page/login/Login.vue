@@ -11,9 +11,7 @@
         <input type="tel" placeholder="请输入验证码" maxlength="6" v-model="code" @input="codeChange" class="inputCode">
       <span :class="btnCodeStyle" @click="getPhoneCode">{{btnCodeText}}</span>
     </section>
-    <section class="button-wrapper">
-      <save-button label="登录/注册" @btnClick='login'></save-button>
-    </section>
+    <save-button label="登录/注册" @btnClick='login'></save-button>
 
   </div>
 </template>
@@ -192,6 +190,6 @@ body {
   line-height: 90px;
 }
 .button-wrapper {
-  padding-top: 150px;
+  margin-top: 100px;
 }
 </style>

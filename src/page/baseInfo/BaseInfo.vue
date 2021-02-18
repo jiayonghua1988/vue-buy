@@ -23,7 +23,8 @@
         </section>
       </div>
     </div>
-    <section class="btn_submit" @click="modifyUserInfo">完成</section>
+    <save-button label='完成' @btnClick='modifyUserInfo'></save-button>
+
   </div>
   <van-popup v-model="showPickerSex" round position="bottom">
             <van-picker
@@ -47,6 +48,7 @@
 </template>
 <script>
 import { mapState } from 'vuex'
+import saveButton from '../../components/save-button.vue'
 export default {
   data () {
     return {
@@ -119,6 +121,9 @@ export default {
   },
   mounted () {
     this.initGradeData()
+  },
+  components: {
+    saveButton
   }
 }
 </script>
@@ -142,17 +147,6 @@ export default {
     background: #fff;
     width:100%;
     box-sizing: border-box;
-  }
-  .btn_submit {
-    width: 90%;
-    margin: 50px 20px;
-    background: #69DC6B;
-    color: #fff;
-    font-size: 36px;
-    height: 90px;
-    border-radius: 100px;
-    text-align: center;
-    line-height: 90px;
   }
   .item_wrap {
     display: flex;
