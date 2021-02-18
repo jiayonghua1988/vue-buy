@@ -1,8 +1,8 @@
 <template>
   <div class="setting-root">
     <section class="item-wrapper">
-      <item-cell label="电话" :icon='iconPhone' :value="phone" line></item-cell>
-      <item-cell label="一键清除未读消息" :icon='iconClean'></item-cell>
+      <item-cell label="电话" :icon='iconPhone' :value="phone" line @cellClick='modifyPhone'></item-cell>
+      <item-cell label="意见反馈" :icon='iconClean' @cellClick="feedback"></item-cell>
     </section>
     <span class="btn-loginout" @click="logout">退出登录/注册</span>
   </div>
@@ -30,6 +30,13 @@ export default {
       }).catch(() => {
         console.log('取消-------------')
       })
+    },
+    feedback () {
+      this.$router.push('/feedback/input')
+    },
+    modifyPhone () {
+      this.$router.push('/modify/phone')
+      console.log('234===================')
     }
   },
   components: {

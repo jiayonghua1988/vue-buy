@@ -110,6 +110,34 @@ const routes = [
     meta: {
       title: '晓方块鼓励语'
     }
+  },
+  {
+    path: '/feedback/input',
+    component: () => import('../page/feedback/input.vue'),
+    meta: {
+      title: '意见反馈'
+    }
+  },
+  {
+    path: '/feedback/list',
+    component: () => import('../page/feedback/list.vue'),
+    meta: {
+      title: '意见反馈'
+    }
+  },
+  {
+    path: '/feedback/detail',
+    component: () => import('../page/feedback/detail.vue'),
+    meta: {
+      title: '意见反馈'
+    }
+  },
+  {
+    path: '/modify/phone',
+    component: () => import('../page/modifyPhone/modifyPhone.vue'),
+    meta: {
+      title: '更换手机号'
+    }
   }
 ]
 

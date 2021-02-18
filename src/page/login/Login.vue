@@ -11,14 +11,19 @@
         <input type="tel" placeholder="请输入验证码" maxlength="6" v-model="code" @input="codeChange" class="inputCode">
       <span :class="btnCodeStyle" @click="getPhoneCode">{{btnCodeText}}</span>
     </section>
-    <div :class="btnLoginStyle" @click="login">登录/注册</div>
+    <section class="button-wrapper">
+      <save-button label="登录/注册" @btnClick='login'></save-button>
+    </section>
+
   </div>
 </template>
 
 <script>
 import { mapMutations } from 'vuex'
 import { sendPhone, authPhone } from '../../assets/requestUrl'
+import saveButton from '../../components/save-button.vue'
 export default {
+  components: { saveButton },
   data () {
     return {
       phone: '',
@@ -185,5 +190,8 @@ body {
   font-size: 30px;
   text-align: center;
   line-height: 90px;
+}
+.button-wrapper {
+  padding-top: 150px;
 }
 </style>

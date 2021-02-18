@@ -9,6 +9,16 @@ Vue.prototype.$axios = axios
 axios.defaults.baseURL = '/web/'
 Vue.config.productionTip = false
 
+// axios.interceptors.response.use(response => {
+//   console.log(response)
+//   if (response.message.includes('401')) {
+//     this.$router.push('/')
+//   }
+//   return response
+// }, error => {
+//   return error
+// })
+
 // 发送手机验证码
 export function sendPhone (phone, success, fail) {
   get('/auth/validateCode/send?phone=' + phone, success, fail)
@@ -25,6 +35,19 @@ export function getCity (success, fail) {
 // 获取家长信息
 export function userParents (parentId, success, fail) {
   get('/api/user/parents/' + parentId, success, fail)
+}
+
+// 新增意见反馈信息
+export function addComplain (data, success, fail) {
+  post('/api/complain/addComplain')
+}
+// 获取反馈列表
+export function searchComplain (success, fail) {
+  get('/api/complain/searchComplain?parentId=' + sessionStorage.getItem('userId'), success, fail)
+}
+// 反馈详情
+export function getComplain (id, success, fail) {
+  get('/api/complain/getComplain/' + id, success, fail)
 }
 
 export function get (url, success, fail) {

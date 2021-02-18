@@ -13,6 +13,17 @@ export const saveUserId = userId => {
   sessionStorage.setItem('userId', userId)
 }
 
+// 日期格式化  yyyy-MM-dd
+export const formatDate = (value) => {
+  const date = new Date(value)
+  const year = date.getFullYear()
+  let month = date.getMonth() + 1
+  month = month < 10 ? '0' + month : month
+  let day = date.getDate()
+  day = day < 10 ? '0' + day : day
+  return year + '-' + month + '-' + day
+}
+
 export const token = () => {
   return this.$store.state.token
 }
