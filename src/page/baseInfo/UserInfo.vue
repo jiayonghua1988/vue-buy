@@ -7,7 +7,7 @@
       <item-cell label="性别" :value="sex" line @cellClick="choiceSex">
         <i class="iconfont iconSize">&#xe740;</i>
       </item-cell>
-      <item-cell label="年级/班级" value="小学一年级" line>
+      <item-cell label="年级/班级" :value="grade" line @cellClick="choiceGrade">
         <i class="iconfont iconSize">&#xe746;</i>
       </item-cell>
       <item-cell label="城市" value="上海市" line>
@@ -30,6 +30,14 @@
             @confirm="sexConfirm"
             />
         </van-popup>
+        <van-popup v-model="showPickerGrade" round position="bottom">
+            <van-picker
+            show-toolbar
+            :columns="gradeColumns"
+            @cancel="showPickerGrade = false"
+            @confirm="gradeConfirm"
+            />
+        </van-popup>
   </div>
 </template>
 
@@ -41,7 +49,11 @@ export default {
     return {
       sex: '男',
       showPickerSex: false,
-      sexColumns: ['男', '女']
+      sexColumns: ['男', '女'],
+      grade: '小学一年级',
+      gradeNum: [],
+      gradeColumns: [],
+      showPickerGrade: false
     }
   },
   components: {
@@ -58,7 +70,40 @@ export default {
     },
     choiceSex () {
       this.showPickerSex = true
+    },
+    gradeConfirm (value) {
+      this.showPickerGrade = false
+      console.log('gradeConfirm....' + value)
+      const array = value.toString().split(',')
+      this.grade = `${array[0]}(${array[1] === '无' ? '' : array[1]}${array[2]})`
+    },
+    initGradeData () {
+      const grade1 = ['小学一年级', '小学二年级', '小学三年级', '小学四年级', '小学五年级', '小学六年级', '初中一年级', '初中二年级', '初中三年级', '高中一年级', '高中二年级', '高中三年级']
+      const gradeItem2 = ['无', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'G', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+      const gradeNum = []
+      for (let i = 1; i < 1001; i++) {
+        gradeNum.push(i + '班')
+      }
+
+      this.gradeColumns.push({
+        values: grade1,
+        defaultIndex: 3
+      })
+      this.gradeColumns.push({
+        values: gradeItem2,
+        defaultIndex: 2
+      })
+      this.gradeColumns.push({
+        values: gradeNum,
+        defaultIndex: 1
+      })
+    },
+    choiceGrade () {
+      this.showPickerGrade = true
     }
+  },
+  mounted () {
+    this.initGradeData()
   }
 }
 </script>
@@ -68,6 +113,7 @@ export default {
   height: 100vh;
   background-color: #F4F4F4;
   padding-top: 10px;
+  box-sizing: border-box;
 }
 .container-wrapper {
   display: flex;
