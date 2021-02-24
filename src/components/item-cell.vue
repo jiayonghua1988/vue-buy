@@ -1,10 +1,10 @@
 <template>
 <div class="flex-row-between bg-color" :class="{'bottom-line' : line}" @click="itemClick">
   <section class="flex-row-center">
-    <img :src="icon" alt="" class="img-icon">
+    <slot class="img-icon"></slot>
     <span class="label">{{label}}</span>
   </section>
-  <section>
+  <section class="value-wrapper">
     <span class="value">{{value}}</span>
     <i class="right-arrow iconfont">&#xe87b;</i>
   </section>
@@ -52,10 +52,12 @@ export default {
   font-size: 30px;
 }
 .img-icon {
-  width: 42px;
   padding-left: 20px;
 }
 .bottom-line {
   border-bottom: 2px solid #E1E1E5;
+}
+.value-wrapper {
+  align-self: center;
 }
 </style>

@@ -138,6 +138,13 @@ const routes = [
     meta: {
       title: '更换手机号'
     }
+  },
+  {
+    path: '/user/info',
+    component: () => import('../page/baseInfo/UserInfo.vue'),
+    meta: {
+      title: '用户信息'
+    }
   }
 ]
 

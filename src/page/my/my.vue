@@ -73,7 +73,7 @@ export default {
     },
     // 用户信息
     gotoUserInfo () {
-      console.log('用户信息=================')
+      this.$router.push('/user/info')
     },
     // 激励语
     clickHearten () {
