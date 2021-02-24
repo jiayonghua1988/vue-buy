@@ -1,22 +1,34 @@
 <template>
   <div class="root-wrapper">
     <section class="input-container">
-      <span class="iconfont input-clear">&#xe696;</span>
-      <input type="text" class="input-content" maxlength="30" placeholder="请输入鼓励语">
+      <span class="iconfont input-clear" @click="clear">&#xe696;</span>
+      <input type="text" class="input-content" maxlength="30" placeholder="请输入鼓励语" v-model="content">
     </section>
-    <section class="save-btn-wrapper">
-      <save-button label="保存" ></save-button>
-    </section>
+
+    <save-button label="保存" @btnClick="save"></save-button>
 
   </div>
 </template>
 
 <script>
 
-import saveButton from '../../components/save-button'
+import SaveButton from '../../components/save-button.vue'
 export default {
+  data () {
+    return {
+      content: ''
+    }
+  },
+  methods: {
+    save () {
+      this.$router.go(-1)
+    },
+    clear () {
+      this.content = null
+    }
+  },
   components: {
-    saveButton
+    SaveButton
   }
 }
 </script>

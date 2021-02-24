@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     saveInfo () {
-
+      this.$router.go(-1)
     },
     sexConfirm (value) {
       this.sex = value

@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     save () {
-
+      this.$router.go(-1)
     }
   },
   components: { SaveButton }
@@ -35,5 +35,7 @@ export default {
   background-color: #fff;
   border-bottom: solid 2px #C4C4C4;
   padding: 3px 20px;
+  color: #28282C;
+  font-size: 32px;
 }
 </style>
