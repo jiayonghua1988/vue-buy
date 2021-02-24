@@ -1,7 +1,7 @@
 <template>
   <div class="root-wrapper">
     <section class="container-wrapper">
-      <item-cell label="学生姓名" value="Oppr17" line>
+      <item-cell label="学生姓名" value="Oppr17" line @cellClick="modifyNickname">
         <i class="iconfont iconSize">&#xe73e;</i>
       </item-cell>
       <item-cell label="性别" :value="sex" line @cellClick="choiceSex">
@@ -100,6 +100,9 @@ export default {
     },
     choiceGrade () {
       this.showPickerGrade = true
+    },
+    modifyNickname () {
+      this.$router.push('/modify/nickname')
     }
   },
   mounted () {

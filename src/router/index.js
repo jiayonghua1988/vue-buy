@@ -145,6 +145,13 @@ const routes = [
     meta: {
       title: '用户信息'
     }
+  },
+  {
+    path: '/modify/nickname',
+    component: () => import('../page/baseInfo/ModifyNickname.vue'),
+    meta: {
+      title: '修改昵称'
+    }
   }
 ]
 

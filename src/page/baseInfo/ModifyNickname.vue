@@ -1,0 +1,39 @@
+<template>
+  <div class="root-wrapper">
+    <input type="text" placeholder="请输入" class="input-style" maxlength="20">
+    <save-button label="保存" @btnClick="save"></save-button>
+  </div>
+</template>
+
+<script>
+import SaveButton from '../../components/save-button.vue'
+export default {
+  data () {
+    return {
+
+    }
+  },
+  methods: {
+    save () {
+
+    }
+  },
+  components: { SaveButton }
+
+}
+</script>
+
+<style>
+.root-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #F4F4F4;
+}
+.input-style {
+  height: 80px;
+  background-color: #fff;
+  border-bottom: solid 2px #C4C4C4;
+  padding: 3px 20px;
+}
+</style>
