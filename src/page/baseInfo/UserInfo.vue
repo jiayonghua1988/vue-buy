@@ -1,7 +1,7 @@
 <template>
   <div class="root-wrapper">
     <section class="container-wrapper">
-      <item-cell label="学生姓名" value="Oppr17" line @cellClick="modifyNickname">
+      <item-cell label="学生姓名" :value="nickname" line @cellClick="modifyNickname">
         <i class="iconfont iconSize">&#xe73e;</i>
       </item-cell>
       <item-cell label="性别" :value="sex" line @cellClick="choiceSex">
@@ -44,6 +44,7 @@
 <script>
 import ItemCell from '../../components/item-cell.vue'
 import SaveButton from '../../components/save-button.vue'
+import { mapMutations } from 'vuex'
 export default {
   data () {
     return {
@@ -53,12 +54,18 @@ export default {
       grade: '小学一年级',
       gradeNum: [],
       gradeColumns: [],
-      showPickerGrade: false
+      showPickerGrade: false,
+      nickname: this.$store.state.userInfo.nickname
     }
   },
   components: {
     ItemCell,
     SaveButton
+  },
+  computed: {
+    ...mapMutations([
+      'updateNickname'
+    ])
   },
   methods: {
     saveInfo () {

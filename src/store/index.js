@@ -8,7 +8,10 @@ export default new Vuex.Store({
   state: {
     // 要设置的初始化值
     userId: '',
-    token: ''
+    token: '',
+    userInfo: {
+      nickname: ''
+    }
   },
   // 更改Vuex的store中的状态值
   mutations: {
@@ -19,6 +22,9 @@ export default new Vuex.Store({
     saveToken (state, token) {
       state.token = token
       sessionStorage.setItem('token', token)
+    },
+    updateNickname (state, nickname) {
+      state.userInfo.nickname = nickname
     }
   },
   //   处理异步更改  提交 mutations，而不是直接更改状态 异步操作  触发变更 通过storestore.dispatch 进行分发action
